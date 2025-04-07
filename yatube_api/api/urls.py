@@ -1,7 +1,13 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from rest_framework.authtoken import views as rest_framework_views
 
+from .views import PostViewSet
 
+
+router = routers.SimpleRouter()
+router.register("posts", PostViewSet)
 urlpatterns = [
     path("api-token-auth/", rest_framework_views.obtain_auth_token),
+    path("", include(router.urls)),
 ]

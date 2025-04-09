@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from posts.models import Post
+from posts.models import Group, Post
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -15,3 +15,9 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data["author"] = self.context["request"].user
         return super().create(validated_data)
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = ("id", "title", "slug", "description")

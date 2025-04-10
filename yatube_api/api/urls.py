@@ -9,10 +9,10 @@ router = routers.SimpleRouter()
 router.register("posts", PostViewSet)
 router.register("groups", GroupViewSet)
 urlpatterns = [
-    path("api-token-auth/", rest_framework_views.obtain_auth_token),
+    path("v1/api-token-auth/", rest_framework_views.obtain_auth_token),
     path(
-        "posts/<int:post_id>/comments/<int:comment_id>/",
-        CommentDetailView.as_view(),
+        "v1/posts/<int:post_id>/comments/<int:comment_id>/",
+        CommentDetailView.as_view()
     ),
-    path("", include(router.urls)),
+    path("v1/", include(router.urls)),
 ]

@@ -8,7 +8,6 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from posts.models import Group, Post, Comment
 from api.permissions import IsAuthorOrReadOnly
 from api.serializers import (
-    CommentBaseSerializer,
     GroupSerializer,
     PostSerializer,
     CommentSerializer,
@@ -46,7 +45,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class CommentDetailView(RetrieveUpdateDestroyAPIView):
-    serializer_class = CommentBaseSerializer
+    serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
